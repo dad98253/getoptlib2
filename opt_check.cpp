@@ -1,6 +1,6 @@
 
 
-#include "getopt.h"
+#include "getoptlib.h"
 #include "misc.h"
 
 extern char *opt_errors[];
@@ -19,7 +19,7 @@ void opt_check(struct opt_entry *list, opt_flags flg, char **argv)
 				fprintf(stderr, "%s: \"%s\"\n",
 				        opt_errors[res], *opt);
 //			error();
-			error(__FILE__, __LINE__);
+			error((char*)__FILE__, __LINE__);
 		}
 		/* Alter **argv to reflect to full option names */
 		else if (*opt[0] == '-') {

@@ -1,7 +1,7 @@
 
 
 
-#include "getopt.h"
+#include "getoptlib.h"
 
 extern char *opt_find(struct opt_entry *list, char *opt, struct opt_entry **entry);
 

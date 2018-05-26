@@ -14,7 +14,7 @@
 //#include "misc.h"
 //#include "memory.h"
 //                       #include "list.h"
-#include "getopt.h"
+#include "getoptlib.h"
 //#include "john.h"
 //#include "memdbg.h"
 
@@ -23,11 +23,11 @@
 
 char *opt_errors[] = {
 	NULL,	// No error 
-	"Unknown option",
-	"Option requires a parameter",
-	"Invalid option parameter",
-	"Extra parameter for option",
-	"Invalid options combination or duplicate option"
+	(char*)"Unknown option",
+	(char*)"Option requires a parameter",
+	(char*)"Invalid option parameter",
+	(char*)"Extra parameter for option",
+	(char*)"Invalid options combination or duplicate option"
 };
 
 char *completed, *completed_param;

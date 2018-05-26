@@ -17,7 +17,7 @@
 
 void list_init(struct list_main **list)
 {
-	*list = mem_alloc_tiny(sizeof(struct list_main), MEM_ALIGN_WORD);
+	*list = (list_main*)mem_alloc_tiny(sizeof(struct list_main), MEM_ALIGN_WORD);
 	(*list)->tail = (*list)->head = NULL;
 	(*list)->count = 0;
 }
@@ -26,7 +26,7 @@ void list_add(struct list_main *list, char *data)
 {
 	struct list_entry *entry;
 
-	entry = mem_alloc_tiny(sizeof(struct list_entry) + strlen(data),
+	entry = (list_entry*)mem_alloc_tiny(sizeof(struct list_entry) + strlen(data),
 		MEM_ALIGN_WORD);
 	strcpy(entry->data, data);
 

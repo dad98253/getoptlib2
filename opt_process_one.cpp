@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#include "getopt.h"
+#include "getoptlib.h"
 
 extern char *completed, *completed_param;
 extern char *opt_find(struct opt_entry *list, char *opt, struct opt_entry **entry);

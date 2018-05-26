@@ -1,7 +1,7 @@
 
 
 #include <string.h>
-#include "getopt.h"
+#include "getoptlib.h"
 
 extern char *completed, *completed_param;
 

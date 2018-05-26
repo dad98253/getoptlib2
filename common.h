@@ -45,14 +45,14 @@
 #if ARCH_INT_GT_32
 typedef unsigned short ARCH_WORD_32;
 typedef unsigned int ARCH_WORD_64;
-#else
+#else	// ARCH_INT_GT_32
 typedef unsigned int ARCH_WORD_32;
 #ifdef WINDOZE
 typedef unsigned __int64 ARCH_WORD_64;
 #else	// WINDOZE
 typedef unsigned long long ARCH_WORD_64;
 #endif	// WINDOZE
-#endif
+#endif	// ARCH_INT_GT_32
 
 /* ONLY use this to check alignments of even power of 2 (2, 4, 8, 16, etc) byte counts (CNT).
    The cast to void* MUST be done, due to C spec. http://stackoverflow.com/a/1898487 */

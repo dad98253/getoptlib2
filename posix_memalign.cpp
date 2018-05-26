@@ -1,7 +1,9 @@
 
 
 #include <malloc.h>
+#ifdef WINDOZE
 #include <windows.h>
+#endif
 
 
 int posix_memalign(void **memptr, size_t alignment, size_t size) {

@@ -90,9 +90,9 @@ void *mem_alloc_func(size_t size
 	res = malloc(size);
 #endif
 	if (!res) {
-		fprintf(stderr, "mem_alloc(): %s trying to allocate \"Zu\" bytes\n", strerror(ENOMEM), size);
+		fprintf(stderr, "mem_alloc(): %s trying to allocate \"%lu\" bytes\n", strerror(ENOMEM), size);
 //		MEMDBG_PROGRAM_EXIT_CHECKS(stderr);
-		error(__FILE__, __LINE__);
+		error((char*)__FILE__, __LINE__);
 	}
 
 	return res;
@@ -116,9 +116,9 @@ void *mem_calloc_func(size_t nmemb, size_t size
 	res = calloc(nmemb, size);
 #endif
 	if (!res) {
-		fprintf(stderr, "mem_calloc(): %s trying to allocate \"Zu\" bytes\n", strerror(ENOMEM), nmemb * size);
+		fprintf(stderr, "mem_calloc(): %s trying to allocate \"%lu\" bytes\n", strerror(ENOMEM), nmemb * size);
 //		MEMDBG_PROGRAM_EXIT_CHECKS(stderr);
-		error(__FILE__, __LINE__);
+		error((char*)__FILE__, __LINE__);
 	}
 
 	return res;
@@ -296,10 +296,10 @@ void *mem_alloc_align_func(size_t size, size_t align
 #elif _ISOC11_SOURCE
 	size = ((size + (align - 1)) / align) * align;
 	if (!(ptr = aligned_alloc(align, size)))
-		pexit(__FILE__, __LINE__,"aligned_alloc (\"Zu\" bytes)", size);
+		pexit((char*)__FILE__, __LINE__,(char*)"aligned_alloc (\"%lu\" bytes)", size);
 #else
 	if (posix_memalign(&ptr, align, size))
-		pexit(__FILE__, __LINE__,"posix_memalign (\"Zu\" bytes)", size);
+		pexit((char*)__FILE__, __LINE__,(char*)"posix_memalign (\"%lu\" bytes)", size);
 #endif
 	return ptr;
 }
@@ -327,8 +327,8 @@ char *str_alloc_copy_func(char *src
 	) {
 	size_t size;
 
-	if (!src) return "";
-	if (!*src) return "";
+	if (!src) return ((char*)"");
+	if (!*src) return ((char*)"");
 
 	size = strlen(src) + 1;
 #if defined (MEMDBG_ON)
