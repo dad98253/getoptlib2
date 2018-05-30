@@ -1,6 +1,10 @@
 
 
+#ifndef BSD
 #include <malloc.h>
+#else	// BSD
+#include <stdlib.h>
+#endif	// BSD
 #ifdef WINDOZE
 #include <windows.h>
 #endif
