@@ -17,11 +17,14 @@
 #if HAVE_MEMALIGN && HAVE_MALLOC_H
 #include <malloc.h>
 #endif
+#ifdef WINDOZE
+#include <malloc.h>
+#endif	// WINDOZE
 
 #include "arch.h"
 #include "misc.h"
 #undef MEMDBG_ON
-#undef HAVE_POSIX_MEMALIGN
+//#undef HAVE_POSIX_MEMALIGN
 #include "memory.h"
 #include "common.h"
 //#include "johnswap.h"
@@ -248,6 +251,7 @@ void *mem_alloc_copy_func(void *src, size_t size, size_t align
 #endif
 }
 
+#ifndef WINDOZE
 void *mem_alloc_align_func(size_t size, size_t align
 #if defined (MEMDBG_ON)
 	, char *file, int line
@@ -319,6 +323,7 @@ void *mem_calloc_align_func(size_t count, size_t size, size_t align
 	memset(ptr, 0, size * count);
 	return ptr;
 }
+#endif	// WINDOZE
 
 char *str_alloc_copy_func(char *src
 #if defined (MEMDBG_ON)

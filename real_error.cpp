@@ -1,5 +1,7 @@
 #include <stdlib.h>
+#ifndef _JOHN_MISC_NO_LOG
 #include <syslog.h>
+#endif	//  _JOHN_MISC_NO_LOG
 
 void real_error(char *file, int line)
 {

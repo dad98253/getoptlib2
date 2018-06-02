@@ -99,7 +99,9 @@ extern void *mem_calloc_func(size_t nmemb, size_t size
 #define mem_calloc_tiny(a,b) mem_calloc_tiny_func(a,b,__FILE__,__LINE__)
 #define mem_alloc_copy(a,b,c) mem_alloc_copy_func(a,b,c,__FILE__,__LINE__)
 #define str_alloc_copy(a) str_alloc_copy_func(a,__FILE__,__LINE__)
+#ifndef WINDOZE
 #define mem_alloc_align(a,b) mem_alloc_align_func(a,b,__FILE__,__LINE__)
+#endif	// WINDOZE
 #define mem_calloc_align(a,b,c) mem_calloc_align_func(a,b,c,__FILE__,__LINE__)
 #else
 #define mem_alloc(a) mem_alloc_func(a)
@@ -108,16 +110,20 @@ extern void *mem_calloc_func(size_t nmemb, size_t size
 #define mem_calloc_tiny(a,b) mem_calloc_tiny_func(a,b)
 #define mem_alloc_copy(a,b,c) mem_alloc_copy_func(a,b,c)
 #define str_alloc_copy(a) str_alloc_copy_func(a)
+#ifndef WINDOZE
 #define mem_alloc_align(a,b) mem_alloc_align_func(a,b)
+#endif	// WINDOZE
 #define mem_calloc_align(a,b,c) mem_calloc_align_func(a,b,c)
 #endif
 
 /* These allow alignment and are wrappers to system-specific functions */
+#ifndef WINDOZE
 void *mem_alloc_align_func(size_t size, size_t align
 #if defined (MEMDBG_ON)
 	, char *file, int line
 #endif
 	);
+#endif	// WINDOZE
 
 void *mem_calloc_align_func(size_t count, size_t size, size_t align
 #if defined (MEMDBG_ON)
