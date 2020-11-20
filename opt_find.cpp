@@ -49,7 +49,8 @@ char *opt_find(struct opt_entry *list, char *opt, struct opt_entry **entry)
 		else
 			return NULL;
 	} else {
-		*entry = list;
-		return opt;
+//		*entry = list;
+//		return opt;
+		return NULL;
 	}
 }

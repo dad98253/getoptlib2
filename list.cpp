@@ -26,7 +26,7 @@ void list_add(struct list_main *list, char *data)
 {
 	struct list_entry *entry;
 
-	entry = (list_entry*)mem_alloc_tiny(sizeof(struct list_entry) + strlen(data),
+	entry = (list_entry*)mem_alloc_tiny(sizeof(struct list_entry) + strlen(data) + 1,
 		MEM_ALIGN_WORD);
 	strcpy(entry->data, data);
 
